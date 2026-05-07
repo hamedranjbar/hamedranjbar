@@ -1,0 +1,25 @@
+name: Run Python Script
+
+on:
+  # این خط باعث می‌شود هر بار که کد push می‌شود، اکشن اجرا شود
+  push:
+    branches: [ main ]
+  # همچنین می‌توانید دکمه Manual Trigger اضافه کنید تا دستی اجرا کنید
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # نسخه پایتون دلخواه را انتخاب کنید
+
+      - name: Run Python script
+        run: |
+          python test1.py
