@@ -1,13 +1,25 @@
+name: Run Python Script
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+# این بخش اجباری است: لیستی از jobها
+jobs:
+  run-script:
+    # این بخش مشخص می‌کند هر job روی چه محیطی اجرا شود
+    runs-on: ubuntu-latest
+
+    # این بخش شامل مراحل اجرا (steps) است
     steps:
       - name: Checkout code
-        # آپدیت به آخرین نسخه پایدار
         uses: actions/checkout@v4
 
       - name: Set up Python
-        # آپدیت به آخرین نسخه پایدار
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'  # پیشنهاد می‌شود از یک نسخه جدیدتر پایتون استفاده کنی
+          python-version: '3.10'
 
       - name: Run Python script
         run: |
